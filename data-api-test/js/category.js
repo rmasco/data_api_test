@@ -10,13 +10,17 @@ function list_category() {
   $('#result_log').empty();
 
   var siteId = $('#category .blog_id').val();
-  var data = {
-    'limit': 0
-  }
-
+  var data = {};
   api.listCategories(siteId, data, function(response) {
+      var tbody = $('#category table tbody');
+      tbody.empty();
       if(response.error){
           // エラー処理
+          alert(response.error.message);
+          return;
+      }
+      if(response.totalResults == 0){
+        alert("category is not found.");
       }
 
       // <td>id</td>
@@ -24,8 +28,6 @@ function list_category() {
       // <td>class</td>
       // <td>basename</td>
 
-      var tbody = $('#category table tbody');
-      tbody.empty();
       for (var i = 0; i < response.totalResults; i++) {
         var cat = response.items[i];
         var tr = $('<tr>');

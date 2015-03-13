@@ -14,7 +14,7 @@ function upload_asset() {
   var siteId = $('#asset .blog_id').val();
   var files = document.getElementById("file").files;
   for (var i = 0; i< files.length; i++){
-    var rename = $('#auto_rename').val() ? true : false;
+    var rename = $('#auto_rename').attr("checked") ? true : false;
     var data = {
       file: files[i], // File object
       path: "",
@@ -25,7 +25,7 @@ function upload_asset() {
     api.uploadAsset(data, function(response) {
       if (response.error) {
         // エラー処理
-        $('#result_log').append($('<p>').append("<div class=\"alert alert-danger\">code：" + response.error.code + "<br />message:" + response.error.message+"</div>"))
+        alert(response.error.message);
         return;
       }
       var img_box = $('<div>').attr('class','col-xs-3 col-md-1');
@@ -48,11 +48,17 @@ function list_asset() {
     limit: 0
   }
   api.listAssets(siteId, data, function(response) {
-      if(response.error){
-          // エラー処理
-      }
       var tbody = $('#asset table tbody');
       tbody.empty();
+      if(response.error){
+        // エラー処理
+        alert(response.error.message);
+        return;
+      }
+      if(response.totalResults==0){
+        alert("asset is not found.");
+        return;
+      }
       for (var i = 0; i < response.totalResults; i++) {
         var asset = response.items[i];
         var tr = $('<tr>');

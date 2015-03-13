@@ -25,7 +25,6 @@ $(function(){
         blog_selector.append($('<option>').val(blog.id).attr('label',blog.name));
       }
       $('.blogs').prepend(blog_selector);
-      // レスポンスデータを使った処理
     });
 
 });

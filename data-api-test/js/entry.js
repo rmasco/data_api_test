@@ -42,13 +42,16 @@ function list_entry() {
   }
 
   api.listEntries(siteId, data, function(response) {
+      var tbody = $('#entry table tbody');
+      tbody.empty();
       if(response.error){
           // エラー処理
           alert(response.error.message);
           return;
       }
-      var tbody = $('#entry table tbody');
-      tbody.empty();
+      if(response.totalResults == 0){
+        alert("entry is not found.");
+      }
       for (var i = 0; i < response.totalResults; i++) {
         var entry = response.items[i];
         var title = entry.title;

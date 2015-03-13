@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>DataAPIテスト</title>
+    <title>DataAPI</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style>
         #result_log {
@@ -27,18 +27,18 @@
 </head>
 <body>
     <div class="container">
-        <h1>MTAsset Uploader using DataAPI v2</h1>
+        <h1>MovableType DataAPI v2</h1>
         
         <nav class="navbar navbar-default navbar-fixed-top">
          <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#top">Project name</a>
+                <a class="navbar-brand" href="#top">Menu</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#asset">Asset関連</a></li>
-                    <li><a href="#entry">Entry関連</a></li>
-                    <li><a href="#category">Category関連</a></li>
+                <ul class="nav nav-pills">
+                    <li role="presentation" class="active"><a href="#asset">Asset関連</a></li>
+                    <li role="presentation" ><a href="#entry">Entry関連</a></li>
+                    <li role="presentation" ><a href="#category">Category関連</a></li>
                 </ul>
             </div>
         </div>
@@ -78,9 +78,17 @@
                         </div>
                     </div>
                 </form>
+                <div class="jumbotron">
+                    <p>uploaded files</p>
+                    <div class="container">
+                        <div class="row">
+                            <div id="result"></div>
+                        </div>
+                    </div>
+                </div>
                 <input type="button" id="list-asset" class="btn btn-primary" value="get assets" />
                 <div class="listing-table">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-condensed">
                         <thead>
                         <tr>
                             <td>id</td>
@@ -94,16 +102,6 @@
                     </table>
                 </div>
             </div>
-        </div>
-
-        <div class="logs">
-            <div id="result_log" class=""></div>
-        </div>
-
-
-        <div class="row">
-            <label>uploaded files</label>
-            <div id="result"></div>
         </div>
     </div>
 
@@ -162,7 +160,7 @@
                 </form>
                 <input type="button" id="list-entry" class="btn btn-primary" value="get entry" />
                 <div class="listing-table">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-condensed">
                         <thead>
                         <tr>
                             <td>id</td>
@@ -177,16 +175,6 @@
                 </div>
 
             </div>
-        </div>
-
-        <div class="logs">
-            <div id="result_log" class=""></div>
-        </div>
-
-
-        <div class="row">
-            <label>uploaded files</label>
-            <div id="result"></div>
         </div>
     </div>
 
@@ -203,29 +191,10 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="file" class="col-sm-2 control-label">Files:</label>
-                        <div class="col-sm-10"><input id="file" type="file" name="upfile[]" multiple></div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="auto_rename" class="col-sm-2 control-label">autoRenameIfExists</label>
-                        <div class="col-sm-10">
-                            <input id="auto_rename" type="checkbox" name="auto_rename" value="1" />
-                            <p class="help-block">If this value is true and the file with the same filename exists, the uploaded file is automatically renamed to the random generated name. Default is false.</p>
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <input id="btn" class="btn btn-primary" type="button" value="submit" />
-                        </div>
-                    </div>
                 </form>
                 <input type="button" id="list-category" class="btn btn-primary" value="get category" />
                 <div class="listing-table">
-                    <table class="table table-hover">
+                    <table class="table table-hover table-condensed">
                         <thead>
                         <tr>
                             <td>id</td>
@@ -240,18 +209,9 @@
                 </div>
             </div>
         </div>
-
-        <div class="logs">
-            <div id="result_log" class=""></div>
-        </div>
-
-
-        <div class="row">
-            <label>uploaded files</label>
-            <div id="result"></div>
-        </div>
     </div>
 </div>
+
 
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 <script src="/mt-static/data-api/v2/js/mt-data-api.min.js"></script>
